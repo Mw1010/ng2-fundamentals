@@ -34,7 +34,17 @@
         defaultExtension: 'js'
       },
       rxjs: {
+        main: './main.js',
         defaultExtension: 'js'
+      },
+      src: {
+        defaultExtension: "js"
+      },
+      test: {
+          defaultExtension: "js"
+      },
+      node_modules: {
+          defaultExtension: "js"
       }
     }
   });
