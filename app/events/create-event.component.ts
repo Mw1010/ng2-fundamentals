@@ -20,15 +20,14 @@ import { EventService } from './shared/index';
 export class CreateEventComponent {
     isDirty = true;
 
-    constructor(private router: Router ) {}
-        //, private _eventService: EventService) {}
+    constructor(private router: Router, private _eventService: EventService) {}
 
     cancel() {
         this.router.navigate(['/events']);
     }
 
     saveEvent(formValues) {
-        // this._eventService.saveEvent(formValues);
+        this._eventService.saveEvent(formValues);
         this.isDirty = false;
         this.router.navigate(['/events']);
     }
