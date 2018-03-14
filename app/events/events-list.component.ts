@@ -9,7 +9,7 @@ import { IEvent } from '.';
 })
 export class EventListCompoment implements OnInit {
 
-    events:IEvent[];
+    events:IEvent;
 
     constructor(
         private _eventService: EventService, 
