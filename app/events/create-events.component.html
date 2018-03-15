@@ -26,13 +26,16 @@
     <div ngModelGroup="location">
         <div class="form-group">
         <label for="address">Event Location:</label>
+        <em *ngIf="newEventForm.controls.location?.controls.address.invalid && (newEventForm.controls.price?.touched)">Required</em>
         <input (ngModel)="address" name="address" id="address" type="text" class="form-control" placeholder="Address of event..." />
         </div>
         <div class="row">
         <div class="col-md-6">
+            <em *ngIf="newEventForm.controls.location?.controls.city.invalid && (newEventForm.controls.price?.touched)">Required</em>
             <input (ngModel)="city" name="city" id="city" type="text" class="form-control" placeholder="City..." />
         </div>
         <div class="col-md-6" >
+            <em *ngIf="newEventForm.controls.location?.controls.counrty.invalid && (newEventForm.controls.price?.touched)">Required</em>
             <input (ngModel)="country" name="country" id="country" type="text" class="form-control" placeholder="Country..." />
         </div>
         </div>
