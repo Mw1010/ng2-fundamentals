@@ -2,7 +2,7 @@
     <h3>Create Session</h3>
   </div>
   <div class="col-md-6">
-    <form [formGroup]="newSessionForm" (ngSubmit)="saveSession(newSessionForm.value)" autocomplete="off">
+    <form [formGroup]="newSessionForm" (ngSubmit)="saveSession(newSessionForm.value)" autocomplete="off" novalidate>
       <div class="form-group" [ngClass]="{'error': name.invalid && name.touched}">
         <label for="sessionName">Session Name:</label>
         <em *ngIf="name.invalid && name.touched">Required</em>

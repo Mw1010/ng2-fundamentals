@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { EventService } from './shared/index';
 
 @Component({
-    templateUrl: 'app/events/create-events.component.html',
+    templateUrl: 'app/events/create-event.component.html',
     styles: [`
     em { 
       float: right;

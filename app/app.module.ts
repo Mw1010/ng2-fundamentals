@@ -12,7 +12,9 @@ import {
     EventsListResolver, 
     CreateSessionComponent,
     SessionListComponent,
-    DurationPipe
+    DurationPipe,
+    UpvoteComponent,
+    LocationValidator
 } from './events/index';
 
 import { EventAppComponent } from './event-app.component';
@@ -30,6 +32,7 @@ import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
 import { ModalTriggerDirective } from './common/modal-trigger.directive';
+import { VoterService } from './events/event-details/voter.service';
 
 declare let toastr: Toastr;
 declare let jQuery: Object;
@@ -53,7 +56,9 @@ declare let jQuery: Object;
         SessionListComponent,
         CollapsibleWellComponent,
         SimpleModalComponent,
+        UpvoteComponent,
         ModalTriggerDirective,
+        LocationValidator,
         DurationPipe,
     ],
     bootstrap: [
@@ -75,6 +80,7 @@ declare let jQuery: Object;
             provide: 'canDeactivateCreateEvent',
             useValue: checkDirtyState
         },
+        VoterService,
         AuthService
     ]
 
