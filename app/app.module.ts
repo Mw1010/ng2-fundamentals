@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { 
@@ -8,13 +9,13 @@ import {
     EventThumbnailComponent, 
     EventService, EventDetailComponent, 
     CreateEventComponent, 
-    EventRouterActivator, 
     EventsListResolver, 
     CreateSessionComponent,
     SessionListComponent,
     DurationPipe,
     UpvoteComponent,
-    LocationValidator
+    LocationValidator,
+    EventResolver,
 } from './events/index';
 
 import { EventAppComponent } from './event-app.component';
@@ -41,6 +42,7 @@ declare let jQuery: Object;
     imports: [
         BrowserModule,
         FormsModule,
+        HttpModule,
         ReactiveFormsModule,
         RouterModule.forRoot(appRoutes)
     ],
@@ -74,7 +76,7 @@ declare let jQuery: Object;
             provide: JQ_TOKEN,
             useValue: jQuery
         },
-        EventRouterActivator,
+        EventResolver,
         EventsListResolver,
         {
             provide: 'canDeactivateCreateEvent',

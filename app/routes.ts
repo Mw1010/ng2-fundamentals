@@ -4,9 +4,9 @@ import {
     EventListCompoment,
     EventDetailComponent,
     CreateEventComponent,
-    EventRouterActivator,
     EventsListResolver,
-    CreateSessionComponent
+    CreateSessionComponent,
+    EventResolver
 } from './events/index';
 
 import { Error404Component } from './errors/404.component';
@@ -17,7 +17,7 @@ export const appRoutes:Routes = [
     { path: 'events', component: EventListCompoment, 
     resolve: {events: EventsListResolver} },
     { path: 'events/:id', component: EventDetailComponent, 
-    canActivate: [EventRouterActivator] },
+    resolve: {event: EventResolver}},
     { path: 'events/session/new', component: CreateSessionComponent },
     { path: '404', component: Error404Component },
     { path: '', redirectTo: '/events', pathMatch: 'full' },
