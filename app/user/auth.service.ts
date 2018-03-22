@@ -14,6 +14,7 @@ export class AuthService {
         let options = new RequestOptions({headers: headers});
         let loginInfo = {username: username, password: password};
 
+        console.log(loginInfo.username);
         return this._http.post('/api/login', JSON.stringify(loginInfo), options)
         .do(resp => {
             if (resp) {
@@ -34,6 +35,7 @@ export class AuthService {
     }
 
     isAuthenticated() {
+        console.log(this.currentUser);
         return !!this.currentUser;
     }
 

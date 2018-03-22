@@ -25,7 +25,6 @@
     "rxjs": "5.0.1",
     "systemjs": "0.19.40",
     "toastr": "^2.1.4",
-    "tslint": "^5.9.1",
     "zone.js": "0.8.4"
   },
   "devDependencies": {
