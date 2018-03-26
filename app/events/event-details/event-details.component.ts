@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../shared/event.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { IEvent, ISession } from '..';
+import { EventService } from '../shared/event.service';
 
 @Component({
-    templateUrl: '/app/events/event-details/event-details.component.html',
+    moduleId: module.id,
+    templateUrl: 'event-details.component.html',
     styles: [
         `
         .container {padding-left: 20px; padding-right: 20px; }
         .event-image {height: 100px; }
         a { cursor: pointer; }
-        `
-    ]
-    // styleUrls: ['/app/events/event-details/event-details.component.css']
+        `,
+    ],
 })
 export class EventDetailComponent implements OnInit {
 
-    event:IEvent;
+    event: IEvent;
     addMode: boolean;
     filterBy: string = 'all';
     sortBy: string = 'votes';
@@ -25,17 +25,17 @@ export class EventDetailComponent implements OnInit {
 
     ngOnInit() {
         this._route.data.forEach((data) => {
-            this.event = data['event'];
+            this.event = data.event;
             this.addMode = false;
         });
     }
 
-    addSession(){
+    addSession() {
         this.addMode = true;
     }
 
     saveNewSession(session: ISession) {
-        const nexId = Math.max.apply(null, this.event.sessions.map(s => s.id));
+        const nexId = Math.max.apply(null, this.event.sessions.map((s) => s.id));
         session.id = nexId + 1;
         this.event.sessions.push(session);
         this._eventService.saveEvent(this.event).subscribe();

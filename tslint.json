@@ -4,7 +4,27 @@
         "tslint:recommended"
     ],
     "rules": {
-        "no-trailing-whitespace": false,
+        "ban-types": false,
+        "class-name": true,
+        "comment-format": [
+            true,
+            "check-space"
+        ],
+        "member-access": false,
+        "no-angle-bracket-type-assertion": false,
+        "no-empty": false,
+        "no-eval": true,
+        "no-string-literal": false,
+        "no-unsafe-finally": true,
+        "no-var-keyword": true,
+        "object-literal-shorthand": false,
+        "object-literal-sort-keys": false,
+        "one-line": [
+            true,
+            "check-open-brace",
+            "check-whitespace"
+        ],
+        "prefer-const": false,
         "quotemark": [
             true,
             "single"
@@ -13,13 +33,10 @@
             true,
             "always"
         ],
-        "whitespace": [
-            false,
-            "check-branch",
-            "check-decl",
-            "check-operator",
-            "check-seperator",
-            "check-type",
+        "variable-name": [
+            true,
+            "check-format",
+            "allow-leading-underscore"
         ]
     },
     "rulesDirectory": []

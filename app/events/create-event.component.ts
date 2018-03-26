@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { EventService } from './shared/index';
 
 @Component({
-    templateUrl: 'app/events/create-event.component.html',
+    moduleId: module.id,
+    templateUrl: 'create-event.component.html',
     styles: [`
-    em { 
+    em {
       float: right;
       color: #E05C65;
       padding-left: 10px;
@@ -15,7 +16,7 @@ import { EventService } from './shared/index';
     .error ::-moz-placeholder { color: #999; }
     .error :-mozt-placeholder { color: #999; }
     .error :ms-input-placeholder { color: #999; }
-  `]
+  `],
 })
 export class CreateEventComponent {
     isDirty = true;
@@ -27,7 +28,7 @@ export class CreateEventComponent {
     }
 
     saveEvent(formValues) {
-        this._eventService.saveEvent(formValues).subscribe(event => {
+        this._eventService.saveEvent(formValues).subscribe((event) => {
             this.router.navigate(['/events']);
             this.isDirty = false;
         });

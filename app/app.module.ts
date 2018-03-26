@@ -1,42 +1,43 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import './rxjs.extensions';
 
-import { 
-    EventListCompoment, 
-    EventThumbnailComponent, 
-    EventService, EventDetailComponent, 
-    CreateEventComponent, 
-    EventsListResolver, 
+import {
+    CreateEventComponent,
     CreateSessionComponent,
-    SessionListComponent,
-    DurationPipe,
-    UpvoteComponent,
-    LocationValidator,
+    DurationPipe, EventDetailComponent,
+    EventListCompoment,
     EventResolver,
+    EventService,
+    EventsListResolver,
+    EventThumbnailComponent,
+    LocationValidator,
+    SessionListComponent,
+    UpvoteComponent,
 } from './events/index';
 
 import { EventAppComponent } from './event-app.component';
 import { NavBarComponent } from './nav/navbar.component';
 
-import { 
-    TOASTR_TOKEN,
-    Toastr,
+import {
     CollapsibleWellComponent,
-    SimpleModalComponent,
+    IToastr,
     JQ_TOKEN,
+    SimpleModalComponent,
+    TOASTR_TOKEN,
  } from './common/index';
- 
-import { appRoutes } from './routes';
-import { Error404Component } from './errors/404.component';
-import { AuthService } from './user/auth.service';
-import { ModalTriggerDirective } from './common/modal-trigger.directive';
-import { VoterService } from './events/event-details/voter.service';
 
-declare let toastr: Toastr;
-declare let jQuery: Object;
+import { ModalTriggerDirective } from './common/modal-trigger.directive';
+import { Error404Component } from './errors/404.component';
+import { VoterService } from './events/event-details/voter.service';
+import { appRoutes } from './routes';
+import { AuthService } from './user/auth.service';
+
+let toastr: IToastr = window['toastr'];
+let jQuery: Object = window['$'];
 
 @NgModule({
     imports: [
@@ -44,7 +45,7 @@ declare let jQuery: Object;
         FormsModule,
         HttpModule,
         ReactiveFormsModule,
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes),
     ],
     declarations: [
         EventAppComponent,
@@ -64,27 +65,27 @@ declare let jQuery: Object;
         DurationPipe,
     ],
     bootstrap: [
-        EventAppComponent
+        EventAppComponent,
     ],
     providers: [
         EventService,
         {
             provide: TOASTR_TOKEN,
-            useValue: toastr
+            useValue: toastr,
         },
         {
             provide: JQ_TOKEN,
-            useValue: jQuery
+            useValue: jQuery,
         },
         EventResolver,
         EventsListResolver,
         {
             provide: 'canDeactivateCreateEvent',
-            useValue: checkDirtyState
+            useValue: checkDirtyState,
         },
         VoterService,
-        AuthService
-    ]
+        AuthService,
+    ],
 
 })
 

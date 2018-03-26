@@ -1,9 +1,10 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
+    moduleId: module.id,
     selector: 'upvote',
-    templateUrl:'app/events/event-details/upvote.component.html',
-    styleUrls: ['app/events/event-details/upvote.component.css']
+    templateUrl: 'upvote.component.html',
+    styleUrls: ['aupvote.component.css'],
 })
 export class UpvoteComponent {
     @Input() count: number;

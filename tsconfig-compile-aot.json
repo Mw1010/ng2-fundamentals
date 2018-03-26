@@ -1,0 +1,22 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": ["es2015", "dom"],
+        "module": "es2015",
+        "moduleResolution": "node",
+        "noImplicityAny": true,
+        "removeComments": true,
+        "sourceMap": false,
+        "suppressImplicityAnyIndexErrors": true,
+        "target": "es5",
+        "typeRoots": [
+            "./node_modules/@types"
+        ]
+    },
+    "files": [
+        "app/app.module.ts",
+        "app/main-aot.ts"
+    ]
+}

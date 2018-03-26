@@ -5,7 +5,7 @@ import { EventService } from './shared/event.service';
 @Injectable()
 export class EventsListResolver implements Resolve<any> {
 
-    constructor(private _eventService: EventService){}
+    constructor(private _eventService: EventService) {}
 
     resolve() {
         return this._eventService.getEvents();

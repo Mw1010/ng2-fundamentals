@@ -1,12 +1,13 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
-import { FormControl, Validators, FormGroup } from "@angular/forms";
-import { ISession, restrictedWords } from "../shared/index";
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ISession, restrictedWords } from '../shared/index';
 
 @Component({
+    moduleId: module.id,
     selector: 'create-session',
-    templateUrl: 'app/events/event-details/create-session.component.html',
+    templateUrl: 'create-session.component.html',
     styles: [`
-    em { 
+    em {
       float: right;
       color: #E05C65;
       padding-left: 10px;
@@ -16,7 +17,7 @@ import { ISession, restrictedWords } from "../shared/index";
     .error ::-moz-placeholder { color: #999; }
     .error :-mozt-placeholder { color: #999; }
     .error :ms-input-placeholder { color: #999; }
-  `]
+  `],
 })
 export class CreateSessionComponent implements OnInit {
     @Output() saveNewSession = new EventEmitter();
@@ -29,11 +30,12 @@ export class CreateSessionComponent implements OnInit {
     abstract: FormControl;
 
     ngOnInit() {
-        this.name = new FormControl('', Validators.required)
-        this.presenter = new FormControl('', Validators.required)
-        this.duration = new FormControl('', Validators.required)
-        this.level = new FormControl('', Validators.required)
-        this.abstract = new FormControl('', [Validators.required, Validators.maxLength(400), restrictedWords(['foo', 'bar'])])
+        this.name = new FormControl('', Validators.required);
+        this.presenter = new FormControl('', Validators.required);
+        this.duration = new FormControl('', Validators.required);
+        this.level = new FormControl('', Validators.required);
+        this.abstract = new FormControl('', [Validators.required, Validators.maxLength(400),
+            restrictedWords(['foo', 'bar'])]);
 
         this.newSessionForm = new FormGroup({
             name: this.name,
@@ -41,7 +43,7 @@ export class CreateSessionComponent implements OnInit {
             duration: this.duration,
             level: this.level,
             abstract: this.abstract,
-        })
+        });
     }
 
     saveSession(formValues) {
@@ -52,12 +54,12 @@ export class CreateSessionComponent implements OnInit {
             duration: +formValues.duration,
             level: formValues.level,
             abstract: formValues.abstract,
-            voters: []
-        }
+            voters: [],
+        };
         this.saveNewSession.emit(session);
     }
 
     cancel() {
-        this.cancelAddSession.emit()
+        this.cancelAddSession.emit();
     }
 }
